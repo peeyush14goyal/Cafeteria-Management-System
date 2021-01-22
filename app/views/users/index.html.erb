@@ -1,1 +1,4 @@
 <p>Hello World</p>
+<% MenuItem.activeMenuItems(Menu.isActive.id).each do |item| %>
+  <p><%= item.name %> and its Menu id is <%= item.menu_id %></p>
+<% end %>

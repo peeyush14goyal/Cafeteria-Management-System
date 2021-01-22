@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
   def index
-    render plain: "Hello this is working"
+    render "users/index"
   end
 end

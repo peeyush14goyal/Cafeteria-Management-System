@@ -1,0 +1,9 @@
+<p>Set active</p>
+<br />
+<% Menu.all.each do |menu|%>
+  <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
+    <%= check_box_tag 'active', nil, menu.active,
+    {:onclick => "this.form.submit()"} %>
+    <p><%= menu.name %></p>
+  <% end %>
+<% end %>
