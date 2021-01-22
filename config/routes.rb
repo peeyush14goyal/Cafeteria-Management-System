@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :orders
   resources :order_items
   resources :menus
+
+  post "add_order_item/:id", to: "order_items#add_item_in_order"
 end
