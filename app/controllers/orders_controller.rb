@@ -4,6 +4,8 @@ class OrdersController < ApplicationController
   end
 
   def create
+    puts "Params  are "
+    puts params
     if current_order.length > 0
       current_order.each { |item|
         OrderItem.create!(
