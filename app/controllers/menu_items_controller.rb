@@ -1,5 +1,7 @@
 class MenuItemsController < ApplicationController
   def index
-    render plain: "This is menu items"
+    if current_user_role == "admin"
+      render "menus/index"
+    end
   end
 end

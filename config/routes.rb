@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get "/" => "home#index"
+  get "users/cart" => "users#cart", as: :cart
+  #get "orders/pending" => "orders#pending", as: :pending_orders
+  post "orders/pending/:id" => "orders#delivered", as: :delivered_order
   resources :users
   resources :menu_items
   resources :orders
   resources :order_items
   resources :menus
+  resources :current_orders
 
-  post "add_order_item/:id", to: "order_items#add_item_in_order"
+  get "/signin" => "sessions#new", as: :new_sessions
+  post "/signin" => "sessions#create", as: :sessions
+  delete "/signout" => "sessions#destroy", as: :destroy_session
+
+  #post "add_order_item/:id", to: "order_items#add_item_in_order"
 end

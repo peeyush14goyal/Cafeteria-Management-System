@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CafeSystem</title>
+    <title>Cafe Management System</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,31 @@
   </head>
 
   <body>
+
+    <% if @current_user %>
+      <div class="UserHeader">
+        <div class="Header">
+          <div>
+            <img src="https://i.pinimg.com/originals/d0/90/02/d09002b6a1bcb269387fe31cecb7c8da.png"
+              alt="chef"
+              class="chef-img" />
+          </div>
+          <div>
+            Cafeteria
+        </div>
+      </div>
+      <div>
+        Welcome <%= @current_user.first_name %> !
+        <%= link_to "Sign-out", destroy_session_path, method: "delete" %>
+      </div>
+      </div>
+    <% end %>
+
+    <% if flash[:error] %>
+      <p class="Flash-error">
+        <%= flash[:error] %>
+      </p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,19 @@
+<h4>Items</h4>
+<table class="cart-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <% items.each do |item|%>
+    <tr>
+      <td><%= item.menu_item_name %></td>
+      <td>Rs. <%= item.menu_item_price %></td>
+       <td><%= item.menu_item_quantity %></td>
+      <td>Rs. <%= item.menu_item_price *  item.menu_item_quantity%></td>
+    </tr>
+  <% end %>
+</table>

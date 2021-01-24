@@ -1,0 +1,38 @@
+.Form-section {
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+.NewUsers--title {
+  max-width: 460px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  margin-top: 50px;
+  font-size: 30px;
+}
+.Form--input {
+  font-size: 20px;
+  padding: 8px;
+}
+.FormInput--label {
+  color: rgb(248, 247, 247);
+  margin-bottom: 8px;
+}
+
+.Form--submit {
+  font-size: 20px;
+  padding: 10px;
+  background-color: #22a545;
+  color: white;
+  border: 0;
+  border-radius: 4px;
+}
+.section-sign {
+  max-width: 460px;
+  margin: 0 auto;
+}
+input {
+  background-color: rgba(184, 104, 104, 0.377);
+  color: white;
+  border: none;
+  outline: none;
+}

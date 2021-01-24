@@ -1,0 +1,16 @@
+<h1>Menus</h1>
+
+<% @menus.each do |menu|%>
+  <h3><%= menu.name %></h3>
+  <div>
+    <div class="MenuItems--table">
+      <%= render partial: "menu-items-section" , locals: {
+          items: MenuItem.activeMenuItems(menu.id),
+        } %>
+    </div>
+    <div>
+      <div class="Btns--Menu"><%= link_to "Add Item", new_user_path %></div>
+      <div class="Btns--Menu"><%= link_to "Set Active", new_user_path %></div>
+    </div>
+  </div>
+<% end %>

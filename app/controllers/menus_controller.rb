@@ -1,6 +1,7 @@
 class MenusController < ApplicationController
   def index
-    render "admin/index"
+    @menus = Menu.all
+    render "menus/index"
   end
 
   def update

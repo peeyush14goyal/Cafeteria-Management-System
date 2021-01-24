@@ -1,0 +1,15 @@
+<h4>Items</h4>
+<table class="cart-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <% items.each do |item|%>
+    <tr>
+      <td><%= item.name %></td>
+      <td>Rs. <%= item.price %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,27 @@
+  <% MenuItem.activeMenuItems(Menu.isActive.id).each do |item| %>
+    <div class="CurrentOrderItems">
+      <div class="CurrentOrderItems--Header">
+
+        <div class="CurrentOrderItems--itemName">
+          <%= item.name %>
+        </div>
+        <%= form_with(url: "/current_orders/#{item.id}", method: "put") do %>
+          <div>
+            Rs <%= item.price%>
+            <%= submit_tag "Add", class: "CurrentOrderItems--AddBtn" %>
+          </div>
+
+        </div>
+
+        <div>
+          <p class="CurrentOrderItems--Para">Quantity : <%= number_field_tag'quantity', 0, in: 0...10, class: "CurrentOrderItems--quantity" %></p>
+        </div>
+      <% end %>
+
+    </div>
+  <% end %>
+  <%= form_with(url: "/users/cart", method: "get") do %>
+    <div class="CurrentOrderItems--orderBtnDiv">
+      <%= submit_tag "Create Order", class: "CurrentOrderItems--orderButton" %>
+    </div>
+  <% end %>

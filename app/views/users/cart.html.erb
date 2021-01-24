@@ -1,0 +1,20 @@
+<div>
+
+      <div  class="cart">
+            <p class="cart-Title">
+                  <img
+                        src="https://www.flaticon.com/svg/vstatic/svg/1170/1170627.svg?token=exp=1611482318~hmac=c9411230c958a5e714db13a92320a7a4"
+                        class="cart-image" alt="cart-image">
+                  Cart
+            </p>
+            <%= render partial: "cart-section" , locals: {
+                  items: @order_items,
+                  order_id: @order.id,
+            } %>
+      </div>
+      <%= form_with(url: "/orders/#{@order_id}", method: "put") do %>
+    <div class="CurrentOrderItems--orderBtnDiv">
+      <%= submit_tag "Place Order", class: "CurrentOrderItems--orderButton" %>
+    </div>
+<% end %>
+</div>
