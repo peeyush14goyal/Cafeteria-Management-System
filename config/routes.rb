@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "users/cart" => "users#cart", as: :cart
   #get "orders/pending" => "orders#pending", as: :pending_orders
   post "orders/pending/:id" => "orders#delivered", as: :delivered_order
+  get "menu_items/new/:id" => "menu_items#new"
   resources :users
   resources :menu_items
   resources :orders

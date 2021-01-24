@@ -1,16 +1,32 @@
-<h1>Menus</h1>
-
+<div class="Menu--Header">
+  <h1>Menus</h1>
+  <div class="Btns--Menu">
+    <%= link_to "Add Menu", "menus/new" %>
+  </div>
+</div>
 <% @menus.each do |menu|%>
   <h3><%= menu.name %></h3>
-  <div>
-    <div class="MenuItems--table">
-      <%= render partial: "menu-items-section" , locals: {
-          items: MenuItem.activeMenuItems(menu.id),
-        } %>
-    </div>
+  <div class="Menu--div">
     <div>
-      <div class="Btns--Menu"><%= link_to "Add Item", new_user_path %></div>
-      <div class="Btns--Menu"><%= link_to "Set Active", new_user_path %></div>
+      <div class="MenuItems--table">
+        <%= render partial: "menu-items-section" , locals: {
+            items: MenuItem.activeMenuItems(menu.id),
+          } %>
+      </div>
+      <div class="MenuUpdate--btns">
+
+          <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
+            <% if menu.active%>
+              <%= submit_tag "Active", class: "Btns--Menu--btnDisabled", disabled: true %>
+            <% else %>
+              <%= submit_tag " Set Active", class: "Btns--Menu" %>
+            <% end %>
+          <% end %>
+
+          <%= form_with(url: "/menu_items/new/#{menu.id}", method: "get") do %>
+                <%= submit_tag "Add Item", class: "Btns--Menu"%>
+            <% end %>
+      </div>
     </div>
   </div>
 <% end %>

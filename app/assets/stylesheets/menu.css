@@ -4,3 +4,38 @@
   background-color: rgba(236, 109, 109, 0.205);
   padding: 15px;
 }
+.Menu--div {
+  padding: 40px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.Btns--Menu {
+  width: 110px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgb(247, 165, 94);
+  margin: 20px;
+  padding: 8px;
+  border-radius: 5px;
+}
+.Btns--Menu--btnDisabled {
+  width: 110px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  background-color: darkgray;
+  margin: 20px;
+  padding: 8px;
+  border-radius: 5px;
+}
+.MenuUpdate--btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.Menu--Header {
+  display: flex;
+  justify-content: space-between;
+}

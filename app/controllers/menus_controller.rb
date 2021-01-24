@@ -16,4 +16,16 @@ class MenusController < ApplicationController
     new_active_menu.save!
     redirect_to "/menus"
   end
+
+  def new
+    render "menus/new"
+  end
+
+  def create
+    Menu.create!(
+      name: params[:name],
+      active: false,
+    )
+    redirect_to "/menus"
+  end
 end
