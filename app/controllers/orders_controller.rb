@@ -27,17 +27,19 @@ class OrdersController < ApplicationController
     order[:status] = "pending"
     order.save!
     CurrentOrder.all.where(order_id: id).each { |item|
-      OrderItem.create!(
-        order_id: id,
-        menu_item_id: item[:menu_item_id],
-        menu_item_name: item[:menu_item_name],
-        menu_item_price: item[:menu_item_price],
-        menu_item_quantity: item[:menu_item_quantity],
-      )
+      if item[:menu_item_quantity] > 0
+        OrderItem.create!(
+          order_id: id,
+          menu_item_id: item[:menu_item_id],
+          menu_item_name: item[:menu_item_name],
+          menu_item_price: item[:menu_item_price],
+          menu_item_quantity: item[:menu_item_quantity],
+        )
+      end
       item.destroy
     }
 
-    render plain: "Order saved"
+    redirect_to "orders_path"
   end
 
   def show

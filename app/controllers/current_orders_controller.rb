@@ -27,4 +27,14 @@ class CurrentOrdersController < ApplicationController
     end
     render "orders/new"
   end
+
+  def destroy
+    id = params[:id]
+    item = CurrentOrder.find_by(id: id)
+    if item != nil
+      puts "Destroyed"
+      item.destroy!
+    end
+    redirect_to cart_path
+  end
 end

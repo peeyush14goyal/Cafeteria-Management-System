@@ -31,6 +31,15 @@ class UsersController < ApplicationController
   def cart
     @current_user_id = current_user.id
     @order = Order.checkCartOrder(@current_user_id)
+    puts "inside cart"
+    @order_items = CurrentOrder.currentUserCart(@order.id)
+    @order_items.each { |item|
+      if MenuItem.find_by(id: item[:menu_item_id]) == nil
+        item[:menu_item_name] = item[:menu_item_name] + " ( NOT AVAILABLE)"
+        item[:menu_item_quantity] = 0
+        item.save!
+      end
+    }
     @order_items = CurrentOrder.currentUserCart(@order.id)
     render cart_path
   end
