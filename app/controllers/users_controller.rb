@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    render "orders/new"
+    render "users/new"
   end
 
   def create
