@@ -1,10 +1,15 @@
 <section class="section-sign">
   <%= form_with(url: "/menu_items", method: "post") do |form| %>
-    <%= hidden_field_tag :menu_id , @menu_id %>
 
     <div class="Form-section">
       <p class="FormInput--label">Menu id: </p>
-      <%= @menu_id %>
+      <% if @menu_id %>
+        <%= @menu_id %>
+        <%= hidden_field_tag :menu_id , @menu_id %>
+
+      <% else %>
+        <%= form.number_field :menu_id, class: "Form--input" %>
+      <% end %>
     </div>
 
 

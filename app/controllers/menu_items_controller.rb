@@ -1,7 +1,8 @@
 class MenuItemsController < ApplicationController
   def index
     if current_user_role == "admin"
-      render "menus/index"
+      @items = MenuItem.getAll
+      render "menu_items/index"
     end
   end
 

@@ -5,11 +5,19 @@ class Order < ApplicationRecord
   end
 
   def self.pendingOrders
-    all.where(delivered_at: nil)
+    all.where(status: "pending")
   end
 
   def self.completedOrders
-    all.where("delivered_at > ?", 0)
+    all.where(status: "delivered")
+  end
+
+  def self.userPendingOrders(id)
+    all.where("status = ? and user_id = ?", "pending", id)
+  end
+
+  def self.userCompletedOrders(id)
+    all.where("status = ? and user_id = ?", "delivered", id)
   end
 
   def self.checkCartOrder(id)

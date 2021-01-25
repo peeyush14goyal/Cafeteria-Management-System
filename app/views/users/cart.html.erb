@@ -6,14 +6,21 @@
             class="cart-image" alt="cart-image">
          Cart
       </p>
-      <%= render partial: "cart-section" , locals: {
-            items: @order_items,
-            order_id: @order.id,
-      } %>
+      <% if @order %>
+            <%= render partial: "cart-section" , locals: {
+                  items: @order_items,
+                  order_id: @order.id,
+            } %>
+      <% else %>
+            <p>Your cart is empty</p>
+            <div class="divButton"><%= link_to "Back to homepage", "/", class: "link" %></div>
+      <% end %>
    </div>
-   <%= form_with(url: "/orders/#{@order_id}", method: "put") do %>
-      <div class="CurrentOrderItems--orderBtnDiv">
-         <%= submit_tag "Place Order", class: "CurrentOrderItems--orderButton" %>
-      </div>
+   <% if @order %>
+      <%= form_with(url: "/orders/#{@order.id}", method: "put") do %>
+            <div class="CurrentOrderItems--orderBtnDiv">
+            <%= submit_tag "Place Order", class: "CurrentOrderItems--orderButton" %>
+            </div>
+      <% end %>
    <% end %>
 </div>

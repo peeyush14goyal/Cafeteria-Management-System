@@ -27,9 +27,13 @@ body {
 }
 
 .Flash-error {
-  color: darkred;
+  color: white;
+  background-color: darkred;
+  max-width: 500px;
+  margin: 0 auto;
   margin-bottom: 20px;
   font-size: 16px;
+  padding: 8px;
 }
 .Header {
   color: white;

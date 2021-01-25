@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
   def index
     if current_user_role == "admin"
-      @pending_orders = Order.all.where(status: "pending")
-      @delivered_orders = Order.all.where(status: "delivered")
+      @pending_orders = Order.pendingOrders
+      @delivered_orders = Order.completedOrders
       @role = current_user_role
       render "orders/index"
     else
-      @pending_orders = Order.all.where("status = ? and user_id = ?", "pending", current_user.id)
-      @delivered_orders = Order.all.where("status = ? and user_id = ?", "delivered", current_user.id)
+      @pending_orders = Order.userPendingOrders(current_user.id)
+      @delivered_orders = Order.userCompletedOrders(current_user.id)
       @role = current_user_role
       render "orders/index"
     end
@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
       item.destroy
     }
 
-    redirect_to "orders_path"
+    redirect_to orders_path
   end
 
   def show

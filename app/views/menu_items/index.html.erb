@@ -1,0 +1,12 @@
+<div class="Menu--Header">
+  <h1>All Items</h1>
+  <div class="Btns--Menu">
+    <%= link_to "Add Item", "menu_items/new" %>
+  </div>
+</div>
+
+<div class="MenuItems--table">
+  <%= render partial: "menu-item-section" , locals: {
+        items: @items,
+    } %>
+</div>

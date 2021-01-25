@@ -28,4 +28,16 @@ class MenusController < ApplicationController
     )
     redirect_to "/menus"
   end
+
+  def destroy
+    id = params[:id]
+    menu = Menu.getMenu(id)
+    if menu != nil
+      items = MenuItems.getMenuItems(id)
+      items.each { |item|
+        item.destroy!
+      }
+    end
+    redirect_to menus_path
+  end
 end

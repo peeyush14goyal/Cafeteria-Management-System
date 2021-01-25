@@ -9,6 +9,6 @@ class Menu < ApplicationRecord
   end
 
   def self.getMenu(id)
-    all.find_by(id: id)
+    find_by(id: id)
   end
 end

@@ -1,0 +1,16 @@
+<table class="cart-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Menu Id<th>
+    </tr>
+  </thead>
+  <% items.each do |item|%>
+    <tr>
+      <td><%= item.name %></td>
+      <td>Rs. <%= item.price %></td>
+      <td><%= item.menu_id %></td>
+    </tr>
+  <% end %>
+</table>
