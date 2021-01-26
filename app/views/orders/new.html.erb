@@ -5,7 +5,7 @@
         <div class="CurrentOrderItems--itemName">
           <%= item.name %>
         </div>
-        <%= form_with(url: "/current_orders/#{item.id}", method: "put") do %>
+        <%= form_with(url: "/current_orders/#{item.id}", method: "put") do |form| %>
           <div>
             Rs <%= item.price%>
             <%= submit_tag "Add", class: "CurrentOrderItems--AddBtn" %>
@@ -14,7 +14,7 @@
         </div>
 
         <div>
-          <p class="CurrentOrderItems--Para">Quantity : <%= number_field_tag'quantity', 0, in: 0...10, class: "CurrentOrderItems--quantity" %></p>
+          <p class="CurrentOrderItems--Para">Quantity : <%= form.number_field :quantity, in: 0...10 %></p>
         </div>
       <% end %>
 

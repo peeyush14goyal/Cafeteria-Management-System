@@ -74,9 +74,9 @@
 .CurrentOrderItems--orderBtnDiv {
   margin-left: 40%;
 }
-input[type="number"]::-webkit-inner-spin-button {
-  opacity: 1;
-}
+/* input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+} */
 .cart {
   max-width: 500px;
   margin: 0 auto;
