@@ -1,24 +1,36 @@
-# README
+# Cafeteria Management System
+An Online Cafeteria Management system, place orders, check their status and when done set the order to completed.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Deployed on Heroku at : http://goyal-cafeteria-system.herokuapp.com/
 
-Things you may want to cover:
+### As Owner, What can I do?
+* See list of all orders
+* Create new delicious menus for customers
+* Add new items to different menus
+* Choose Today's Menu
+* When order is completed, Mark it as completed
+* See list of all dishes available at your cafe, add them.
+* You can even create orders on behalf of customer
 
-* Ruby version
+### Ok, so how can do I login as owner ?
+Email: **admin@gmail.com**
+Password: **admin**
 
-* System dependencies
+### Customer : What can I do?
+* See today's special menu.
+* Select how much of each dish do you want ? (Max : 10)
+* Add to your cart
+* Check your cart and delete items you do not want and place order.
+* Forgot to order from cart? No problem, we save all your items in your cart. Come anytime and place it. :-)
+* See all your orders. Pending and Completed all
 
-* Configuration
+You can sign up using your email id or use this
+#### Sample User Account
+Email: **test1@gmail.com**
+Password: **test1**
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Stack Used
+* Postgresql
+* Ruby on Rails
+* Heroku for hosting
+* HTML CSS
