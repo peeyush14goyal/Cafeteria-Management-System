@@ -3,6 +3,13 @@ An Online Cafeteria Management system, place orders, check their status and when
 
 ### Deployed on Heroku at : http://goyal-cafeteria-system.herokuapp.com/
 
+#### Screenshots
+
+![alt_text](https://github.com/peeyush14goyal/Cafeteria-Management-System/blob/master/screenshots/admin_home.PNG)
+![alt_text](https://github.com/peeyush14goyal/Cafeteria-Management-System/blob/master/screenshots/menu_items.PNG)
+![alt_text](https://github.com/peeyush14goyal/Cafeteria-Management-System/blob/master/screenshots/orders.PNG)
+
+
 ### As Owner, What can I do?
 * See list of all orders
 * Create new delicious menus for customers
