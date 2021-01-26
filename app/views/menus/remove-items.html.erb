@@ -1,0 +1,7 @@
+<h1> <%= @menu.name %></h1>
+<div class="MenuItems--table">
+  <%= render partial: "menu-items-section" , locals: {
+      items: @items,
+      showRemove: true
+    } %>
+</div>

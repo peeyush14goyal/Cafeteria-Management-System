@@ -10,6 +10,13 @@
     <tr>
       <td><%= item.name %></td>
       <td>Rs. <%= item.price %></td>
+      <% if showRemove %>
+        <td>
+          <%= form_with(url: "/menu_items/#{item.id}", method: "delete") do %>
+            <%= submit_tag "Remove" %>
+          <% end %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

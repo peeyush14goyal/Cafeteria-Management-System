@@ -29,6 +29,12 @@ class MenusController < ApplicationController
     redirect_to "/menus"
   end
 
+  def show
+    @menu = Menu.find_by(id: params[:id])
+    @items = MenuItem.activeMenuItems(@menu[:id])
+    render "menus/remove-items"
+  end
+
   def destroy
     id = params[:id]
     menu = Menu.getMenu(id)

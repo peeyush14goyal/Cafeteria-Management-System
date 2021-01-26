@@ -11,6 +11,7 @@
       <div class="MenuItems--table">
         <%= render partial: "menu-items-section" , locals: {
             items: MenuItem.activeMenuItems(menu.id),
+            showRemove: false
           } %>
       </div>
       <div class="MenuUpdate--btns">
@@ -25,7 +26,11 @@
 
           <%= form_with(url: "/menu_items/new/#{menu.id}", method: "get") do %>
                 <%= submit_tag "Add Item", class: "Btns--Menu"%>
-            <% end %>
+          <% end %>
+
+          <div class="Btns--Menu">
+            <%= link_to "Remove Item", "menus/#{menu.id}" %>
+          </div>
       </div>
     </div>
   </div>

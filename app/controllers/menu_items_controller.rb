@@ -19,4 +19,13 @@ class MenuItemsController < ApplicationController
     @menu_id = params[:id]
     render "menu_items/new"
   end
+
+  def destroy
+    id = params[:id]
+    menu_item = MenuItem.find_by(id: id)
+    if menu_item
+      menu_item.destroy
+    end
+    redirect_to menus_path
+  end
 end
