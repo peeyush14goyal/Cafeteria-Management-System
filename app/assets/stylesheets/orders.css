@@ -22,7 +22,7 @@
   font-size: 20px;
   font-weight: bold;
 }
-.CurrentOrderItems--AddBtn {
+/* .CurrentOrderItems--AddBtn {
   background-color: rgb(5, 170, 5);
   color: white;
   font-size: 15px;
@@ -32,8 +32,7 @@
   padding: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
-  cursor: pointer;
-}
+} */
 .CurrentOrderItems--Header {
   display: flex;
   justify-content: space-between;
