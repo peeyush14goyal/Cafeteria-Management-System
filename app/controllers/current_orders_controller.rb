@@ -25,6 +25,8 @@ class CurrentOrdersController < ApplicationController
         menu_item_quantity: params[:quantity].to_i,
         total: item[:price] * params[:quantity].to_i,
       )
+    else
+      flash[:error] = "Quantity is #{params[:quantity].to_i}"
     end
     render "orders/new"
   end
