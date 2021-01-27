@@ -7,10 +7,16 @@ class MenuItemsController < ApplicationController
   end
 
   def create
+    if params[:picture]
+      img_string = imgString(params[:picture])
+    else
+      img_string = nil
+    end
     MenuItem.create!(
       menu_id: params[:menu_id],
       name: params[:name],
       price: params[:price],
+      imgPath: img_string,
     )
     redirect_to "/menus"
   end
@@ -27,5 +33,27 @@ class MenuItemsController < ApplicationController
       menu_item.destroy
     end
     redirect_to menus_path
+  end
+
+  def edit
+    id = params[:id]
+    @item = MenuItem.getItem(id)
+    render "menu_items/edit"
+  end
+
+  def update
+    if params[:picture]
+      img_string = imgString(params[:picture])
+    else
+      img_string = nil
+    end
+    id = params[:id]
+    item = MenuItem.getItem(id)
+    item[:menu_id] = params[:menu_id]
+    item[:name] = params[:name]
+    item[:price] = params[:price]
+    item[:imgPath] = img_string
+    item.save!
+    redirect_to menu_items_path
   end
 end

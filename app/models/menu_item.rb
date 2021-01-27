@@ -15,4 +15,8 @@ class MenuItem < ApplicationRecord
   def self.getMenuItems(id)
     all.where(menu_id: id)
   end
+
+  def self.decodeBase64(encoded_base64_string)
+    return decode(encoded_base64_string, "base64")
+  end
 end

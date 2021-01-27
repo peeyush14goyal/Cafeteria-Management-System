@@ -1,5 +1,4 @@
 body {
-  /* background-color: rgb(248, 207, 198); */
   background-image: url("https://img.freepik.com/free-photo/coffee-cup-coffee-beans-old-wooden-background_126277-173.jpg?size=626&ext=jpg&ga=GA1.2.158196710.1611469346");
   background-repeat: no-repeat;
   background-position: center;
@@ -118,4 +117,8 @@ details {
 .admin-HomePage {
   margin: 0 auto;
   width: 300px;
+}
+td {
+  border-bottom: 1px solid darkslategray;
+  height: 150px;
 }

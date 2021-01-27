@@ -22,4 +22,10 @@ class ApplicationController < ActionController::Base
   def current_user_role
     current_user.role
   end
+
+  def imgString(picture)
+    image = File.open(picture) { |img| img.read }
+    img_code = Base64.encode64 image
+    return img_code
+  end
 end

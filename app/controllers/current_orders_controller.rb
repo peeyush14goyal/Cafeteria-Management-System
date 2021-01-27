@@ -3,7 +3,6 @@ class CurrentOrdersController < ApplicationController
     id = params[:id]
     item = MenuItem.getItem(id)
     cartOrder = Order.checkCartOrder(current_user.id)
-    puts "Quantity is #{params[:quantity].to_i}"
     if cartOrder == nil
       Order.create!(
         user_id: current_user.id,
@@ -16,7 +15,6 @@ class CurrentOrdersController < ApplicationController
     end
 
     if item && params[:quantity].to_i > 0
-      puts "Order created for #{item[:name]}"
       CurrentOrder.create!(
         order_id: order_id,
         menu_item_id: id,

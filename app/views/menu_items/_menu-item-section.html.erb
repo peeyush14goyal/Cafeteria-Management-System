@@ -1,16 +1,20 @@
 <table class="cart-table">
   <thead>
     <tr>
+      <th></th>
       <th>Name</th>
       <th>Price</th>
       <th>Menu Id<th>
+      <th></th>
     </tr>
   </thead>
   <% items.each do |item|%>
     <tr>
+      <td><img src="<%= "data:image/png;base64, #{item.imgPath}" %>" class="Menu-Item--image" alt="image not found"></td>
       <td><%= item.name %></td>
       <td>Rs. <%= item.price %></td>
       <td><%= item.menu_id %></td>
+      <td><%= link_to "Edit Item", "menu_items/#{item.id}/edit", class: "divButton" %></td>
     </tr>
   <% end %>
 </table>

@@ -1,0 +1,28 @@
+<section class="section-sign">
+  <%= form_with(url: "/menu_items/#{@item.id}", method: "put") do |form| %>
+
+    <div class="Form-section">
+      <p class="FormInput--label">Menu id: </p>
+        <%= number_field_tag :menu_id, @item.menu_id, class: "Form--input" %>
+    </div>
+
+
+    <div class="Form-section">
+      <p class="FormInput--label">Item Name:</p>
+      <%= text_field_tag :name, @item.name, class: "Form--input" %>
+    </div>
+
+    <div class="Form-section">
+      <p class="FormInput--label">Item Price:</p>
+      Rs. <%= number_field_tag :price, @item.price, class: "Form--input",  step: :any %>
+    </div>
+
+    <div class="Form-section">
+      <%= form.file_field :picture %>
+    </div>
+
+    <div class="Form-section">
+      <%= form.submit "Update Item", class: "Form--submit" %>
+    </div>
+  <% end %>
+</section>

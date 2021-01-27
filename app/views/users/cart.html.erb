@@ -6,7 +6,7 @@
             class="cart-image" alt="cart-image">
          Cart
       </p>
-      <% if @order %>
+      <% if @order && @order_items.length > 0 %>
             <%= render partial: "cart-section" , locals: {
                   items: @order_items,
                   order_id: @order.id,

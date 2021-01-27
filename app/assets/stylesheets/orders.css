@@ -22,7 +22,7 @@
   font-size: 20px;
   font-weight: bold;
 }
-/* .CurrentOrderItems--AddBtn {
+.CurrentOrderItems--AddBtn {
   background-color: rgb(5, 170, 5);
   color: white;
   font-size: 15px;
@@ -32,10 +32,12 @@
   padding: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
-} */
+}
 .CurrentOrderItems--Header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 .CurrentOrderItems--Para {
   text-align: right;
@@ -77,7 +79,7 @@
   display: none;
 } */
 .cart {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
   align-items: center;
   background-image: url("https://i0.wp.com/seekgif.com/uploads/menu-background-clipart-2.jpeg?h=250");
