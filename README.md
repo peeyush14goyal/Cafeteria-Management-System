@@ -14,6 +14,8 @@ An Online Cafeteria Management system, place orders, check their status and when
 * See list of all orders
 * Create new delicious menus for customers
 * Add new items to different menus
+* Remove Menus that you do not want
+* Remove Items from Menus
 * Choose Today's Menu
 * When order is completed, Mark it as completed
 * See list of all dishes available at your cafe, add them.
