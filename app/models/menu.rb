@@ -1,4 +1,6 @@
 class Menu < ApplicationRecord
+  validates :name, presence: true
+  validates :active, presence: true
   has_many :menu_items
 
   def self.isActive

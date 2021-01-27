@@ -10,7 +10,7 @@
   </thead>
   <% items.each do |item|%>
     <tr>
-      <td><img src="<%= "data:image/png;base64, #{item.imgPath}" %>" class="Menu-Item--image" alt="image not found"></td>
+      <td><img src="<%= "data:image/png;base64, #{item.imgPath}" %>" class="Menu-Item--image" alt="NOT AVAILABLE"></td>
       <td><%= item.name %></td>
       <td>Rs. <%= item.price %></td>
       <td><%= item.menu_id %></td>

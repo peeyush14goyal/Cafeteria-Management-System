@@ -11,7 +11,7 @@
   flex-direction: row;
 }
 .Btns--Menu {
-  width: 110px;
+  min-width: 110px;
   font-size: 18px;
   text-align: center;
   cursor: pointer;
@@ -19,6 +19,7 @@
   margin: 20px;
   padding: 8px;
 }
+
 .Btns--Menu--btnDisabled {
   width: 110px;
   font-size: 18px;

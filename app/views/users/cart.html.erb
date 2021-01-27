@@ -16,7 +16,7 @@
             <div class="divButton"><%= link_to "Back to homepage", "/", class: "link" %></div>
       <% end %>
    </div>
-   <% if @order %>
+   <% if @order && @order_items.length > 0 %>
       <%= form_with(url: "/orders/#{@order.id}", method: "put") do %>
             <div class="CurrentOrderItems--orderBtnDiv">
             <%= submit_tag "Place Order", class: "CurrentOrderItems--orderButton" %>

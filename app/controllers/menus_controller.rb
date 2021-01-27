@@ -39,11 +39,15 @@ class MenusController < ApplicationController
     id = params[:id]
     menu = Menu.getMenu(id)
     if menu != nil
-      items = MenuItems.getMenuItems(id)
-      items.each { |item|
-        item.destroy!
-      }
+      items = MenuItem.getMenuItems(id)
+      if items
+        items.destroy_all
+      end
+      # items.each { |item|
+      #   item.destroy!
+      # }
     end
+    menu.destroy!
     redirect_to menus_path
   end
 end

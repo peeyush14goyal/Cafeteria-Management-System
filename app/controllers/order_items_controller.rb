@@ -17,6 +17,8 @@ class OrderItemsController < ApplicationController
         menu_item_name: item.name,
         menu_item_price: item.price,
         menu_item_quantity: params[:quantity],
+        imgPath: item[:imgPath],
+
       })
     else
       current_order[present][:menu_item_quantity] = params[:quantity]

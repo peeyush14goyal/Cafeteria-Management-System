@@ -1,5 +1,7 @@
 class Order < ApplicationRecord
   has_many :order_items
+  validates :user_id, presence: true
+  validates :status, presence: true
   def self.getCount
     all.count
   end
