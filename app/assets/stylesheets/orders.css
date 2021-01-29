@@ -122,12 +122,12 @@
   padding: 20px;
   width: 700px;
   display: grid;
-  grid-template-columns: 2fr 1fr 9fr;
-  row-gap: 10px;
+  grid-template-columns: 4fr 1fr 7fr;
+  row-gap: 20px;
   text-align: center;
   color: sandybrown;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 15px;
 }
 .Order--UserDetails:nth-child(odd) {
   border-left: 1px solid black;

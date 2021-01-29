@@ -16,6 +16,7 @@
       </summary>
       <%= render partial: "order-user-section" , locals: {
         user: User.find_by(id: order.user_id),
+        order: order
       } %>
       <br />
       <%= render partial: "orderItems-section" , locals: {

@@ -25,6 +25,8 @@ class OrdersController < ApplicationController
     id = params[:id]
     order = Order.find_by(id: id)
     order[:status] = "pending"
+    order[:order_customer_name] = params[:order_customer_name]
+    order[:order_customer_email] = params[:order_customer_email]
     order.save!
     CurrentOrder.all.where(order_id: id).each { |item|
       if item[:menu_item_quantity] > 0
@@ -34,6 +36,7 @@ class OrdersController < ApplicationController
           menu_item_name: item[:menu_item_name],
           menu_item_price: item[:menu_item_price],
           menu_item_quantity: item[:menu_item_quantity],
+          imgPath: item[:items_imgPath],
         )
       end
       item.destroy

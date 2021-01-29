@@ -36,3 +36,7 @@ input {
   border: none;
   outline: none;
 }
+.Cart--Customer-Details {
+  margin: 0 auto;
+  max-width: 300px;
+}

@@ -43,9 +43,6 @@ class MenusController < ApplicationController
       if items
         items.destroy_all
       end
-      # items.each { |item|
-      #   item.destroy!
-      # }
     end
     menu.destroy!
     redirect_to menus_path
