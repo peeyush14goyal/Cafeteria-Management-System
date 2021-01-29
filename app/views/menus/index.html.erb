@@ -24,6 +24,10 @@
             <% end %>
           <% end %>
 
+          <div class="Btns--Menu">
+            <%= link_to "Edit Menu Name", "menus/#{menu.id}/edit" %>
+          </div>
+
           <%= form_with(url:  "/menus/#{menu.id}", method: "delete") do %>
                 <%= submit_tag "Remove Menu",data: { confirm: "Are you sure you want to delete #{menu.name}. This action will also delete all items in the menu. This action is IRREVERSIBLE?" }, class: "Btns--Menu"%>
           <% end %>

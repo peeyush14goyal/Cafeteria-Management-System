@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post "orders/pending/:id" => "orders#delivered", as: :delivered_order
   get "menu_items/new/:id" => "menu_items#new"
   post "uploads" => "users#upload"
+  put "menus/edit/:id" => "menus#editMenu", as: :edit_menu
   resources :users
   resources :menu_items
   resources :orders

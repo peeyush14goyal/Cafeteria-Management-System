@@ -47,4 +47,30 @@ class MenusController < ApplicationController
     menu.destroy!
     redirect_to menus_path
   end
+
+  def editMenu
+    id = params[:id]
+    menu = Menu.getMenu(id)
+    if menu
+      menu[:name] = params[:menu_name]
+      menu.save!
+    else
+      Menu.create!(
+        name: params[:menu_name],
+        active: false,
+      )
+    end
+    redirect_to menus_path
+  end
+
+  def edit
+    id = params[:id]
+    @menu = Menu.find_by(id: id)
+    if @menu
+      render "menus/edit"
+    else
+      flash[:error] = "Menu does not exist"
+      render menus_path
+    end
+  end
 end

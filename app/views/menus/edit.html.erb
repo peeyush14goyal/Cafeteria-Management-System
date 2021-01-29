@@ -1,0 +1,14 @@
+<h1>Edit Menu</h1>
+<section class="section-sign">
+  <%= form_with(url: "/menus/edit/#{@menu.id}", method: "put") do |form| %>
+
+    <div class="Form-section">
+      <p class="FormInput--label">Menu Name:</p>
+      <%= form.text_field :menu_name, @menu.name class: "Form--input" %>
+    </div>
+
+    <div class="Form-section">
+      <%= form.submit "Update Menu", class: "Form--submit" %>
+    </div>
+  <% end %>
+</section>

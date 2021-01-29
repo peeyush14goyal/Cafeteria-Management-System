@@ -12,8 +12,18 @@ class MenuItemsController < ApplicationController
     else
       img_string = nil
     end
+    menu = Menu.getMenu(params[:menu_id])
+
+    if menu == nil
+      Menu.create!(
+        id: params[:menu_id],
+        name: "Untitled Menu",
+        active: false,
+      )
+      menu = Menu.getMenu(params[:menu_id])
+    end
     MenuItem.create!(
-      menu_id: params[:menu_id],
+      menu_id: menu.id,
       name: params[:name],
       price: params[:price],
       imgPath: img_string,
