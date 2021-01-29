@@ -6,7 +6,7 @@ An Online Cafeteria Management system, place orders, check their status and when
 #### Screenshots
 
 ![alt_text](https://github.com/peeyush14goyal/Cafeteria-Management-System/blob/master/screenshots/admin_home.PNG)
-![alt_text](https://github.com/peeyush14goyal/Cafeteria-Management-System/blob/master/screenshots/menu_items.PNG)
+![alt_text](https://github.com/peeyush14goyal/Cafeteria-Management-System/blob/master/screenshots/items_with_images.PNG)
 ![alt_text](https://github.com/peeyush14goyal/Cafeteria-Management-System/blob/master/screenshots/orders.PNG)
 
 
