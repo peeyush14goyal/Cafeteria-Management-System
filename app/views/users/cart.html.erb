@@ -10,6 +10,7 @@
             <%= render partial: "cart-section" , locals: {
                   items: @order_items,
                   order_id: @order.id,
+                  total: @total,
             } %>
 
       <% else %>

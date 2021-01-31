@@ -23,6 +23,20 @@ class ApplicationController < ActionController::Base
     current_user.role
   end
 
+  def isAdmin
+    if current_user_role == "Customer" || current_user_role == "clerk"
+      flash[:error] = "Access Denied"
+      redirect_to "/"
+    end
+  end
+
+  def isManagement
+    if current_user_role == "Customer"
+      flash[:error] = "Access Denied"
+      redirect_to "/"
+    end
+  end
+
   def imgString(picture)
     image = File.open(picture) { |img| img.read }
     img_code = Base64.encode64 image

@@ -40,3 +40,13 @@ input {
   margin: 0 auto;
   max-width: 300px;
 }
+.All-User-Div {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1f4L1psysuOCjjwKr5_qxT1RBxufh3J19zg&usqp=CAU");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 25px;
+  max-width: 450px;
+  margin: 0 auto;
+  align-items: center;
+  margin-bottom: 20px;
+}

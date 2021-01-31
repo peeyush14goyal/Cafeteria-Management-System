@@ -1,4 +1,6 @@
 class MenusController < ApplicationController
+  before_action :isAdmin
+
   def index
     @menus = Menu.all
     render "menus/index"

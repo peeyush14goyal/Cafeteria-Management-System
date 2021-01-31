@@ -5,8 +5,10 @@ class HomeController < ApplicationController
     if current_user
       if current_user_role == "admin"
         render "users/admin_index"
+      elsif current_user_role == "clerk"
+        render "users/clerk"
       else
-        render "users/user_index"
+        render "users/customer_index"
       end
     else
       render "index"

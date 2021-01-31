@@ -3,7 +3,7 @@ class CurrentOrdersController < ApplicationController
     id = params[:id]
     item = MenuItem.getItem(id)
     cartOrder = Order.checkCartOrder(current_user.id)
-    if (current_user_role == "admin")
+    if (current_user_role == "admin" || current_user_role == "clerk")
       customer_type = "Walk-in"
     else
       customer_type = "Online"

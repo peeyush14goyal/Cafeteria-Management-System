@@ -1,9 +1,11 @@
 class OrdersController < ApplicationController
+  before_action :isManagement, only: [:delivered]
+
   def index
-    if current_user_role == "admin"
+    if current_user_role == "admin" || current_user_role == "clerk"
       @pending_orders = Order.pendingOrders
       @delivered_orders = Order.completedOrders
-      @role = current_user_role
+      @showDeliverButton = true
       render "orders/index"
     else
       @pending_orders = Order.userPendingOrders(current_user.id)
@@ -27,8 +29,10 @@ class OrdersController < ApplicationController
     order[:status] = "pending"
     order[:order_customer_name] = params[:order_customer_name]
     order[:order_customer_email] = params[:order_customer_email]
-    order.save!
+    total = 0
     CurrentOrder.all.where(order_id: id).each { |item|
+      total = total + item[:menu_item_quantity] * item[:menu_item_price]
+
       if item[:menu_item_quantity] > 0
         OrderItem.create!(
           order_id: id,
@@ -41,11 +45,9 @@ class OrdersController < ApplicationController
       end
       item.destroy
     }
-
+    order[:order_total] = total
+    order.save!
     redirect_to orders_path
-  end
-
-  def show
   end
 
   def delivered

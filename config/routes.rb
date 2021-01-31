@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "menu_items/new/:id" => "menu_items#new"
   post "uploads" => "users#upload"
   put "menus/edit/:id" => "menus#editMenu", as: :edit_menu
+  get "users/all" => "users#all", as: :all_users
   resources :users
   resources :menu_items
   resources :orders

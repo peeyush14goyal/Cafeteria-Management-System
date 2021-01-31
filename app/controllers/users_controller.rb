@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   skip_before_action :ensure_user_logged_in
+  before_action :isAdmin, only: [:all]
 
   def index
-    render "users/user_index"
+    redirect_to "/"
   end
 
   def new
@@ -36,18 +37,24 @@ class UsersController < ApplicationController
     @order = Order.checkCartOrder(@current_user_id)
     if @order
       @order_items = CurrentOrder.currentUserCart(@order.id)
-      total = 0
+      @total = 0
       @order_items.each { |item|
         if MenuItem.find_by(id: item[:menu_item_id]) == nil && item[:menu_item_quantity] != 0
           item[:menu_item_name] = item[:menu_item_name] + " ( NOT AVAILABLE)"
           item[:menu_item_quantity] = 0
           item.save!
         else
-          total += item[:menu_item_price] * item[:menu_item_quantity]
+          @total = @total + item[:menu_item_price] * item[:menu_item_quantity]
         end
       }
       @order_items = CurrentOrder.currentUserCart(@order.id)
     end
     render cart_path
+  end
+
+  def all
+    @customers = User.getCustomers()
+    @clerks = User.getClerks()
+    render "users/all_users"
   end
 end

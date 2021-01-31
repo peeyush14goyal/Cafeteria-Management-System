@@ -1,0 +1,29 @@
+<div>
+  <h2>Clerks</h2>
+  <% @clerks.each do |clerk| %>
+    <div class="Order--UserDetails All-User-Div">
+      <div>Name</div>
+      <div>:</div>
+      <div><%= clerk.first_name %></div>
+
+      <div>Email</div>
+      <div>:</div>
+      <div><%= clerk.email %></div>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <h2>Customers</h2>
+  <% @customers.each do |customer| %>
+    <div class="Order--UserDetails All-User-Div">
+      <div>Name</div>
+      <div>:</div>
+      <div><%= customer.first_name %></div>
+
+      <div>Email</div>
+      <div>:</div>
+      <div><%= customer.email %></div>
+    </div>
+  <% end %>
+</div>

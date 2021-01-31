@@ -1,9 +1,9 @@
 class MenuItemsController < ApplicationController
+  before_action :isAdmin
+
   def index
-    if current_user_role == "admin"
-      @items = MenuItem.getAll
-      render "menu_items/index"
-    end
+    @items = MenuItem.getAll
+    render "menu_items/index"
   end
 
   def create
