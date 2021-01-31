@@ -27,27 +27,35 @@ class OrdersController < ApplicationController
     id = params[:id]
     order = Order.find_by(id: id)
     order[:status] = "pending"
-    order[:order_customer_name] = params[:order_customer_name]
-    order[:order_customer_email] = params[:order_customer_email]
-    total = 0
-    CurrentOrder.all.where(order_id: id).each { |item|
-      total = total + item[:menu_item_quantity] * item[:menu_item_price]
+    if params[:order_customer_name].length == 0
+      flash[:error] = "Customer Name field cannot be empty"
+      redirect_to cart_path
+    elsif params[:order_customer_email].length == 0
+      flash[:error] = "Customer Email field cannot be empty"
+      redirect_to cart_path
+    else
+      order[:order_customer_name] = params[:order_customer_name]
+      order[:order_customer_email] = params[:order_customer_email]
+      total = 0
+      CurrentOrder.all.where(order_id: id).each { |item|
+        total = total + item[:menu_item_quantity] * item[:menu_item_price]
 
-      if item[:menu_item_quantity] > 0
-        OrderItem.create!(
-          order_id: id,
-          menu_item_id: item[:menu_item_id],
-          menu_item_name: item[:menu_item_name],
-          menu_item_price: item[:menu_item_price],
-          menu_item_quantity: item[:menu_item_quantity],
-          imgPath: item[:items_imgPath],
-        )
-      end
-      item.destroy
-    }
-    order[:order_total] = total
-    order.save!
-    redirect_to orders_path
+        if item[:menu_item_quantity] > 0
+          OrderItem.create!(
+            order_id: id,
+            menu_item_id: item[:menu_item_id],
+            menu_item_name: item[:menu_item_name],
+            menu_item_price: item[:menu_item_price],
+            menu_item_quantity: item[:menu_item_quantity],
+            imgPath: item[:items_imgPath],
+          )
+        end
+        item.destroy
+      }
+      order[:order_total] = total
+      order.save!
+      redirect_to orders_path
+    end
   end
 
   def delivered

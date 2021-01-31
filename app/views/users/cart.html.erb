@@ -23,13 +23,13 @@
 
             <div class="Cart--Customer-Details">
                <div class="Form-section">
-                  <p class="FormInput--label"> Customer Name:</p>
-               <%= form.text_field :order_customer_name, class: "Form--input" %>
+                  <p class="FormInput--label"> Customer Name* : </p>
+               <%= form.text_field :order_customer_name, class: "Form--input", :required => true %>
                </div>
 
                <div class="Form-section">
-                  <p class="FormInput--label"> Customer Email:</p>
-               <%= form.email_field :order_customer_email, class: "Form--input" %>
+                  <p class="FormInput--label"> Customer Email* :</p>
+               <%= form.email_field :order_customer_email, class: "Form--input", :required => true%>
                </div>
             </div>
 
