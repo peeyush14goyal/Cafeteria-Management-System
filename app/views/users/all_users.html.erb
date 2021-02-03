@@ -1,10 +1,11 @@
 <div>
+  <div class="Title">Users</div>
   <div class="CreateUser">
     <div class="Btns--admin">
       <%= link_to "Create User", create_user_path %>
     </div>
   </div>
-  <h2>Clerks</h2>
+  <div class="SubTitle">Clerks</div>
   <% @clerks.each do |clerk| %>
     <div class="Order--UserDetails All-User-Div">
       <div>Name</div>
@@ -19,7 +20,7 @@
 </div>
 
 <div>
-  <h2>Customers</h2>
+  <div class="SubTitle">Customers</div>
   <% @customers.each do |customer| %>
     <div class="Order--UserDetails All-User-Div">
       <div>Name</div>

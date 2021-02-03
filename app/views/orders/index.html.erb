@@ -1,7 +1,7 @@
-<h1> All Orders</h1>
+<div class="Title"> All Orders</div>
 
 <div class="PendingOrders--div">
-  <h3>Pending Orders</h3>
+  <div class="SubTitle">Pending Orders</div>
   <% @pending_orders.each do |order|%>
     <details>
       <summary  class="Orders--Title">
@@ -26,7 +26,7 @@
     </details>
 
   <% end %>
-  <h3>Delivered Orders</h3>
+  <div class="SubTitle">Delivered Orders</div>
   <% @delivered_orders.each do |order|%>
     <details>
       <summary  class="Orders--Title">
