@@ -2,32 +2,17 @@ class MenuItemsController < ApplicationController
   before_action :isAdmin
 
   def index
-    @items = MenuItem.getAll
+    @items = MenuItem.get_all_items
     render "menu_items/index"
   end
 
   def create
     if params[:picture]
-      img_string = imgString(params[:picture])
+      img_string = img_string(params[:picture])
     else
       img_string = nil
     end
-    menu = Menu.getMenu(params[:menu_id])
-
-    if menu == nil
-      Menu.create!(
-        id: params[:menu_id],
-        name: "Untitled Menu",
-        active: false,
-      )
-      menu = Menu.getMenu(params[:menu_id])
-    end
-    MenuItem.create!(
-      menu_id: menu.id,
-      name: params[:name],
-      price: params[:price],
-      imgPath: img_string,
-    )
+    MenuItem.create_item(params, menu.id, img_string)
     redirect_to "/menus"
   end
 
@@ -38,32 +23,23 @@ class MenuItemsController < ApplicationController
 
   def destroy
     id = params[:id]
-    menu_item = MenuItem.find_by(id: id)
-    if menu_item
-      menu_item.destroy
-    end
+    MenuItem.delete_item(id)
     redirect_to menus_path
   end
 
   def edit
     id = params[:id]
-    @item = MenuItem.getItem(id)
+    @item = MenuItem.get_item(id)
     render "menu_items/edit"
   end
 
   def update
     if params[:picture]
-      img_string = imgString(params[:picture])
+      img_string = img_string(params[:picture])
     else
       img_string = nil
     end
-    id = params[:id]
-    item = MenuItem.getItem(id)
-    item[:menu_id] = params[:menu_id]
-    item[:name] = params[:name]
-    item[:price] = params[:price]
-    item[:imgPath] = img_string
-    item.save!
+    MenuItem.update_item(params, img_string)
     redirect_to menu_items_path
   end
 end

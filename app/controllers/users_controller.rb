@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :ensure_user_logged_in
-  before_action :isAdmin, only: [:all]
+  before_action :isAdmin, only: [:all, :createUser]
 
   def index
     redirect_to "/"
@@ -11,18 +11,25 @@ class UsersController < ApplicationController
   end
 
   def create
+    if params[:role]
+      role = params[:role]
+    else
+      role = "Customer"
+    end
     user = User.new(
       first_name: params[:first_name],
       email: params[:email],
       password: params[:password],
-      role: "Customer",
+      role: role,
     )
     existing = User.find_by(email: user.email)
     if existing != nil
       flash[:error] = "Email already exists"
       render "users/new"
     else
-      if user.save
+      if user.save && params[:role]
+        render "users/all_users"
+      elsif user.save
         #session[:current_user_id] = user.id
         redirect_to "/signin"
       else
@@ -56,5 +63,9 @@ class UsersController < ApplicationController
     @customers = User.getCustomers()
     @clerks = User.getClerks()
     render "users/all_users"
+  end
+
+  def createUser
+    render "users/admin_create_user"
   end
 end

@@ -1,4 +1,9 @@
 <div>
+  <div class="CreateUser">
+    <div class="Btns--admin">
+      <%= link_to "Create User", create_user_path %>
+    </div>
+  </div>
   <h2>Clerks</h2>
   <% @clerks.each do |clerk| %>
     <div class="Order--UserDetails All-User-Div">

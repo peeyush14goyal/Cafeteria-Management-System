@@ -7,16 +7,19 @@
   margin-left: 55%;
 }
 .CurrentOrderItems {
-  width: 65%;
+  width: 800px;
   margin: 0 auto;
   margin-bottom: 25px;
-  font-size: 15px;
+  font-size: 16px;
   background-color: rgba(107, 40, 40, 0.568);
-  /* background-blend-mode: darken; */
   padding: 10px;
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: 3fr 3fr 2fr 4fr;
+  align-items: center;
 }
 .CurrentOrderItems:hover {
-  transform: scale(1.1);
+  background-color: rgba(107, 40, 40);
 }
 .CurrentOrderItems--itemName {
   font-size: 20px;
@@ -32,17 +35,7 @@
   padding: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
-}
-.CurrentOrderItems--Header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-}
-.CurrentOrderItems--Para {
-  text-align: right;
-  font-size: 16px;
-  padding-right: 55px;
+  cursor: pointer;
 }
 .CurrentOrderItems--total {
   text-align: right;
@@ -75,9 +68,6 @@
 .CurrentOrderItems--orderBtnDiv {
   margin-left: 40%;
 }
-/* input[type="number"]::-webkit-inner-spin-button {
-  display: none;
-} */
 .cart {
   max-width: 700px;
   margin: 0 auto;
@@ -131,4 +121,16 @@
 }
 .Order--UserDetails:nth-child(odd) {
   border-left: 1px solid black;
+}
+.Item--image {
+  height: 80px;
+  width: 100px;
+  border-radius: 10px;
+}
+.Order-New-Add-Item {
+  display: flex;
+  justify-content: space-around;
+}
+.CurrentOrderItems--Quantity-Input {
+  font-size: 19px;
 }

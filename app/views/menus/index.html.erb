@@ -4,42 +4,45 @@
     <%= link_to "Add Menu", "menus/new" %>
   </div>
 </div>
-<% @menus.each do |menu|%>
-  <h3><%= menu.name %></h3>
-  <div class="Menu--div">
-    <div>
-      <div class="MenuItems--table">
-        <%= render partial: "menu-items-section" , locals: {
-            items: MenuItem.activeMenuItems(menu.id),
-            showRemove: false
-          } %>
-      </div>
-      <div class="MenuUpdate--btns">
 
-          <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
-            <% if menu.active%>
-              <%= submit_tag "Active", class: "Btns--Menu--btnDisabled", disabled: true %>
-            <% else %>
-              <%= submit_tag " Set Active", class: "Btns--Menu" %>
+<div class="Menus">
+  <% @menus.each do |menu|%>
+    <div class="Menu-outer-div">
+      <h3><%= menu.name %></h3>
+      <div class="Menu--div">
+        <div class="MenuItems--table">
+          <%= render partial: "menu-items-section" , locals: {
+              items: MenuItem.get_menu_items(menu.id),
+              showRemove: false
+            } %>
+        </div>
+        <div class="MenuUpdate--btns">
+
+            <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
+              <% if menu.active%>
+                <%= submit_tag "Active", class: "Btns--Menu--btnDisabled", disabled: true %>
+              <% else %>
+                <%= submit_tag " Set Active", class: "Btns--Menu" %>
+              <% end %>
             <% end %>
-          <% end %>
 
-          <div class="Btns--Menu">
-            <%= link_to "Edit Menu Name", "menus/#{menu.id}/edit" %>
-          </div>
+            <div class="Btns--Menu">
+              <%= link_to "Edit Menu Name", "menus/#{menu.id}/edit" %>
+            </div>
 
-          <%= form_with(url:  "/menus/#{menu.id}", method: "delete") do %>
-                <%= submit_tag "Remove Menu",data: { confirm: "Are you sure you want to delete #{menu.name}. This action will also delete all items in the menu. This action is IRREVERSIBLE?" }, class: "Btns--Menu"%>
-          <% end %>
+            <%= form_with(url:  "/menus/#{menu.id}", method: "delete") do %>
+                  <%= submit_tag "Remove Menu",data: { confirm: "Are you sure you want to delete #{menu.name}. This action will also delete all items in the menu. This action is IRREVERSIBLE?" }, class: "Btns--Menu"%>
+            <% end %>
 
-          <%= form_with(url: "/menu_items/new/#{menu.id}", method: "get") do %>
-                <%= submit_tag "Add Item", class: "Btns--Menu"%>
-          <% end %>
+            <%= form_with(url: "/menu_items/new/#{menu.id}", method: "get") do %>
+                  <%= submit_tag "Add Item", class: "Btns--Menu"%>
+            <% end %>
 
-          <div class="Btns--Menu">
-            <%= link_to "Remove Item", "menus/#{menu.id}" %>
-          </div>
+            <div class="Btns--Menu">
+              <%= link_to "Remove Item", "menus/#{menu.id}" %>
+            </div>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

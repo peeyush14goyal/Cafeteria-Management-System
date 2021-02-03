@@ -1,24 +1,28 @@
   <% MenuItem.activeMenuItems(Menu.isActive.id).each do |item| %>
     <div class="CurrentOrderItems">
-      <div class="CurrentOrderItems--Header">
+      <div>
+        <img src="<%= "data:image/png;base64, #{item.imgPath}" %>" class="Order-New-Item--image" alt="NOT AVAILABLE">
+      </div>
 
-        <div>
-          <img src="<%= "data:image/png;base64, #{item.imgPath}" %>" class="Menu-Item--image" alt="NOT AVAILABLE">
-        </div>
+      <div class="CurrentOrderItems--itemName">
+        <%= item.name %>
+      </div>
 
+      <div>
+        Rs <%= item.price%>
+      </div>
 
-        <div class="CurrentOrderItems--itemName">
-          <%= item.name %>
-        </div>
-        <%= form_with(url: "/current_orders/#{item.id}", method: "put") do |form| %>
+      <%= form_with(url: "/current_orders/#{item.id}", method: "put") do |form| %>
+
+        <div class="Order-New-Add-Item">
           <div>
-            Rs <%= item.price%>
-            <%= submit_tag "Add", class: "CurrentOrderItems--AddBtn" %>
+            <span>Quantity : <%= form.number_field :quantity, in: 0...10, class: "CurrentOrderItems--Quantity-Input" %></span>
           </div>
 
+          <div>
+            <%= submit_tag "Add", class: "CurrentOrderItems--AddBtn" %>
+          </div>
         </div>
-
-        <p class="CurrentOrderItems--Para">Quantity : <%= form.number_field :quantity, in: 0...10 %></p>
       <% end %>
 
     </div>

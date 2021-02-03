@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def imgString(picture)
+  def img_string(picture)
     image = File.open(picture) { |img| img.read }
     img_code = Base64.encode64 image
     return img_code
