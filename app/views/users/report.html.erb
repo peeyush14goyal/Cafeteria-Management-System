@@ -1,0 +1,60 @@
+<div>
+  <div class="Report--Head"> See Report Between </div>
+  <%= form_with url: get_report_path do |form| %>
+    <div  class="Report-Search-Div">
+      <div class="Form-section">
+        <span>
+          Start Date :
+          <%= date_field_tag 'start_date' %>
+        </span>
+      </div>
+
+      <div class="Form-section">
+        <span>
+          End Date :
+          <%= date_field_tag 'end_date' %>
+        </span>
+      </div>
+
+      <div class="Form-section">
+        <%= form.submit "Show Report", class: "Form--submit" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+ <% if @report_data != nil %>
+  <div class="Report-Show">
+    <div class="Title">
+      <div>REPORT</div>
+      <div class="Report-Date"><%= @report_data[:start_date] %>  - <%= @report_data[:end_date] %></div>
+    </div>
+    <%= render partial: "stats" , locals: {
+          report: @report_data
+        } %>
+
+     <h4>Max Ordered Item</h4>
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+
+        <tr>
+          <td><img src="<%= "data:image/png;base64, #{@report_data[:max_item_ordered][:imgPath]}" %>" class="Item--image" alt="NOT AVAILABLE"></td>
+          <td><%= @report_data[:max_item_ordered][:menu_item_name] %></td>
+          <td>Rs. <%= @report_data[:max_item_ordered][:menu_item_price] %></td>
+            <td><%= @report_data[:max_item_quantity] %></td>
+          <td>Rs. <%= @report_data[:max_item_ordered][:menu_item_price]  *  @report_data[:max_item_quantity]%></td>
+        </tr>
+    </table>
+
+    <%= render partial: "orders-section" , locals: {
+      report: @report_data
+    } %>
+  </div>
+ <% end %>

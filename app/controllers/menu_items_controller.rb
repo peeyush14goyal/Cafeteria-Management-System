@@ -12,7 +12,7 @@ class MenuItemsController < ApplicationController
     else
       img_string = nil
     end
-    MenuItem.create_item(params, menu.id, img_string)
+    MenuItem.create_item(params, img_string)
     redirect_to "/menus"
   end
 

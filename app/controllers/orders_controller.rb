@@ -16,6 +16,12 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @current_user_id = current_user.id
+    @order = Order.check_cart_order(@current_user_id)
+    if @order
+      @order_items = CurrentOrder.current_user_cart(@order.id)
+    end
+    @total = 0
     render "orders/new"
   end
 

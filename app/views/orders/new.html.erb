@@ -1,7 +1,7 @@
-  <% MenuItem.activeMenuItems(Menu.isActive.id).each do |item| %>
+  <% MenuItem.get_menu_items(Menu.isActive.id).each do |item| %>
     <div class="CurrentOrderItems">
       <div>
-        <img src="<%= "data:image/png;base64, #{item.imgPath}" %>" class="Order-New-Item--image" alt="NOT AVAILABLE">
+        <img src="<%= "data:image/png;base64, #{item.imgPath}" %>" class="Item--image" alt="NOT AVAILABLE">
       </div>
 
       <div class="CurrentOrderItems--itemName">
@@ -17,6 +17,9 @@
         <div class="Order-New-Add-Item">
           <div>
             <span>Quantity : <%= form.number_field :quantity, in: 0...10, class: "CurrentOrderItems--Quantity-Input" %></span>
+            <% if @order_items && @order_items.find_by(menu_item_id: item.id)%>
+              <div class="NewOrder-show-quantity">In Cart: <%= @order_items.find_by(menu_item_id: item.id)[:menu_item_quantity] %></div>
+            <% end %>
           </div>
 
           <div>

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   put "menus/edit/:id" => "menus#editMenu", as: :edit_menu
   get "users/all" => "users#all", as: :all_users
   get "users/create_user" => "users#createUser", as: :create_user
+  post "users/reports" => "users#get_report", as: :get_report
+  get "users/reports" => "users#report", as: :report
+
   resources :users
   resources :menu_items
   resources :orders

@@ -1,0 +1,26 @@
+<p>Details</p>
+<div class="Order--UserDetails">
+  <div>Max Orders on</div>
+  <div>:</div>
+  <div><%= report[:max_order_date] %></div>
+
+  <div>Min Orders on</div>
+  <div>:</div>
+  <div><%= report[:min_order_date] %></div>
+
+  <div> Max Orders By User's Name</div>
+  <div>:</div>
+  <div><%= report[:max_order_user][:first_name] %></div>
+
+  <div> Max Orders By User's Email</div>
+  <div>:</div>
+  <div><%= report[:max_order_user][:email] %></div>
+
+  <div>Max Orders Mode</div>
+  <div>:</div>
+  <div><%= report[:mode] %></div>
+
+  <div>Revenue</div>
+  <div>:</div>
+  <div>Rs. <%= report[:revenue] %></div>
+</div>

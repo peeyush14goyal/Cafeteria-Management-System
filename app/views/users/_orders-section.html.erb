@@ -1,18 +1,11 @@
 <div class="Title"> All Orders</div>
 
-<div class="PendingOrders--div">
+<div>
   <div class="SubTitle">Pending Orders</div>
-  <% @pending_orders.each do |order|%>
+  <% report[:pending_orders].each do |order|%>
     <details>
       <summary  class="Orders--Title">
         Order #<%= order.id%>
-        <% if @showDeliverButton %>
-          <div class="OrdersDisplay--Form">
-            <%= form_with(url: "/orders/pending/#{order.id}", method: "post") do %>
-              <%= submit_tag "Mark as delivered", class: "CurrentOrderItems--orderButton" %>
-            <% end %>
-          </div>
-        <% end %>
       </summary>
       <%= render partial: "order-user-section" , locals: {
         user: User.find_by(id: order.user_id),
@@ -27,7 +20,7 @@
 
   <% end %>
   <div class="SubTitle">Delivered Orders</div>
-  <% @delivered_orders.each do |order|%>
+  <% report[:delivered_orders].each do |order|%>
     <details>
       <summary  class="Orders--Title">
           Order #<%= order.id%>

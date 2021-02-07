@@ -5,11 +5,11 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 3 }
   has_secure_password
 
-  def self.getCustomers
+  def self.get_customers
     all.where(role: "Customer")
   end
 
-  def self.getClerks
+  def self.get_clerks
     all.where(role: "clerk")
   end
 

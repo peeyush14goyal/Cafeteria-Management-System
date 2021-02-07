@@ -19,7 +19,7 @@ class MenuItem < ApplicationRecord
     return decode(encoded_base64_string, "base64")
   end
 
-  def self.create_item(params, id, img_string)
+  def self.create_item(params, img_string)
     menu = Menu.get_menu(params[:menu_id])
 
     if menu == nil
@@ -27,8 +27,8 @@ class MenuItem < ApplicationRecord
       menu = Menu.get_menu(params[:menu_id])
     end
     MenuItem.create!(
-      menu_id: id,
-      name: params[:name],
+      menu_id: menu.id,
+      name: params[:item_name],
       price: params[:price],
       imgPath: img_string,
     )
@@ -47,7 +47,9 @@ class MenuItem < ApplicationRecord
     item[:menu_id] = params[:menu_id]
     item[:name] = params[:name]
     item[:price] = params[:price]
-    item[:imgPath] = img_string
+    if img_string && img_string.length > 0
+      item[:imgPath] = img_string
+    end
     item.save!
   end
 end

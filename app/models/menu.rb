@@ -45,9 +45,9 @@ class Menu < ApplicationRecord
   end
 
   def self.remove_menu(id)
-    menu = Menu.getMenu(id)
+    menu = Menu.get_menu(id)
     if menu != nil
-      items = MenuItem.getMenuItems(id)
+      items = MenuItem.get_menu_items(id)
       if items
         items.destroy_all
       end
@@ -57,7 +57,7 @@ class Menu < ApplicationRecord
 
   def self.edit_menu(params)
     id = params[:id]
-    menu = Menu.getMenu(id)
+    menu = Menu.get_menu(id)
     if menu
       menu[:name] = params[:menu_name]
       menu.save!

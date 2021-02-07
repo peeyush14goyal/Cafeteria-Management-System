@@ -65,3 +65,41 @@ select {
   border: none;
   padding: 10px;
 }
+.Report-Search-Div {
+  width: 700px;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+input[type="date"] {
+  height: 30px;
+}
+.Report-Show {
+  max-width: 700px;
+  margin: 0 auto;
+  align-items: center;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1f4L1psysuOCjjwKr5_qxT1RBxufh3J19zg&usqp=CAU");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+}
+.Report-Date {
+  font-size: 15px;
+  margin: 20px;
+}
+.Report--Head {
+  width: 400px;
+  font-size: 18px;
+  margin: 0 auto;
+  color: white;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}

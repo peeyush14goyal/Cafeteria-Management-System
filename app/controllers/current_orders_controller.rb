@@ -1,7 +1,7 @@
 class CurrentOrdersController < ApplicationController
   def update
-    CurrentOrder.create_cart_order(item, params, order_id)
-    render "orders/new"
+    CurrentOrder.create_cart_order(params, current_user, current_user_role)
+    redirect_to new_order_path
   end
 
   def destroy

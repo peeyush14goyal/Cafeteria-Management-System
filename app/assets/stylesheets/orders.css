@@ -134,3 +134,18 @@
 .CurrentOrderItems--Quantity-Input {
   font-size: 19px;
 }
+.NewOrder-show-quantity {
+  font-size: 13px;
+  margin: 5px;
+  margin-top: 15px;
+  color: coral;
+}
+.Cart-BackButton {
+  width: 200px;
+  margin-left: 82%;
+  background-color: brown;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  margin-right: 30px;
+}
