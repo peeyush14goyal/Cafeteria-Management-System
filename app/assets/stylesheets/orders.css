@@ -19,7 +19,7 @@
   align-items: center;
 }
 .CurrentOrderItems:hover {
-  background-color: rgba(107, 40, 40);
+  background-color: rgba(107, 40, 40, 1);
 }
 .CurrentOrderItems--itemName {
   font-size: 20px;
