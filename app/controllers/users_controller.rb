@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :ensure_user_logged_in
-  before_action :isAdmin, only: [:all, :createUser]
+  before_action :isAdmin, only: [:all, :createUser, :get_report, :report]
 
   def index
     redirect_to "/"

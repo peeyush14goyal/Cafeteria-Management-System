@@ -2,13 +2,14 @@
   <%= form_with(url: "/menu_items", method: "post") do |form| %>
 
     <div class="Form-section">
-      <p class="FormInput--label">Menu id: </p>
-      <% if @menu_id %>
-        <%= @menu_id %>
-        <%= hidden_field_tag :menu_id , @menu_id %>
+      <p class="FormInput--label">Menu Name: </p>
+      <% if @menu %>
+        <%= @menu[:name] %>
+        <%= hidden_field_tag :menu_id , @menu[:id] %>
 
       <% else %>
-        <%= form.number_field :menu_id, class: "Form--input" %>
+        <%= form.select :menu_id, @menus %>
+        <%# <%= form.number_field :menu_id, class: "Form--input" %>
       <% end %>
     </div>
 

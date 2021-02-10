@@ -17,7 +17,11 @@ class MenuItemsController < ApplicationController
   end
 
   def new
-    @menu_id = params[:id]
+    @menu = Menu.get_menu(params[:id])
+    @menus = []
+    Menu.all.each { |menu|
+      @menus.push([menu[:name], menu[:id]])
+    }
     render "menu_items/new"
   end
 
