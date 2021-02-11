@@ -6,7 +6,7 @@ class Menu < ApplicationRecord
     find_by(active: true)
   end
   def self.get_active_menu
-    find_by(active: true)
+    all.where(active: true)
   end
 
   def self.get_menu(id)
@@ -34,11 +34,6 @@ class Menu < ApplicationRecord
   end
 
   def self.set_active_menu(id)
-    old_active_menu = Menu.get_active_menu
-    if old_active_menu && old_active_menu.id != id
-      old_active_menu.active = false
-      old_active_menu.save!
-    end
     new_active_menu = Menu.get_menu(id)
     new_active_menu.active = true
     new_active_menu.save!

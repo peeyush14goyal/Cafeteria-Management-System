@@ -2,30 +2,39 @@
 
 <div class="PendingOrders--div">
   <div class="SubTitle">Pending Orders</div>
-  <% @pending_orders.each do |order|%>
-    <details>
-      <summary  class="Orders--Title">
-        Order #<%= order.id%>
-        <% if @showDeliverButton %>
-          <div class="OrdersDisplay--Form">
-            <%= form_with(url: "/orders/pending/#{order.id}", method: "post") do %>
-              <%= submit_tag "Mark as delivered", class: "CurrentOrderItems--orderButton" %>
-            <% end %>
-          </div>
-        <% end %>
-      </summary>
-      <%= render partial: "order-user-section" , locals: {
-        user: User.find_by(id: order.user_id),
-        order: order
-      } %>
-      <br />
-      <%= render partial: "orderItems-section" , locals: {
-        items: OrderItem.get_specific_order_items(order.id),
-        order_total: order.order_total
-      } %>
-    </details>
+  <% if @pending_orders.all.count > 0 %>
+    <% @pending_orders.each do |order|%>
+      <details>
+        <summary  class="Orders--Title">
+          Order #<%= order.id%>
+          <% if @showDeliverButton %>
+            <div class="OrdersDisplay--Form">
+              <%= form_with(url: "/orders/pending/#{order.id}", method: "post") do %>
+                <%= submit_tag "Mark as delivered", class: "CurrentOrderItems--orderButton" %>
+              <% end %>
+            </div>
+          <% end %>
+        </summary>
+        <%= render partial: "order-user-section" , locals: {
+          user: User.find_by(id: order.user_id),
+          order: order
+        } %>
+        <br />
+        <%= render partial: "orderItems-section" , locals: {
+          items: OrderItem.get_specific_order_items(order.id),
+          order_total: order.order_total
+        } %>
+      </details>
+    <% end %>
 
+  <% else %>
+    <%= render partial: "empty-section" , locals: {
+          image: "food-truck.png",
+          text: "No Pending Orders"
+        } %>
   <% end %>
+
+
   <div class="SubTitle">Delivered Orders</div>
   <% @delivered_orders.each do |order|%>
     <details>

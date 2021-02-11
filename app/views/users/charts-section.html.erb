@@ -1,0 +1,30 @@
+<div class="Title">Statistics</div>
+<div class="Admin-Chart-Main-Div">
+    <div>
+      <div>Order Status</div>
+      <div class="Admin-chart">
+        <%= pie_chart Order.group(:status).count, colors: ["brown", "coral", "#945944"]  %>
+      </div>
+    </div>
+
+    <div>
+      <div>Orders on different days</div>
+      <div class="Admin-chart">
+        <%= column_chart Order.group_by_day(:created_at).count, colors: ["brown"] %>
+      </div>
+    </div>
+
+    <div>
+      <div>Menu Item in how many Orders ?</div>
+      <div class="Admin-chart">
+        <%= column_chart OrderItem.group(:menu_item_name).count, colors: ["brown"] %>
+      </div>
+    </div>
+
+    <div>
+      <div>Order Type</div>
+      <div class="Admin-chart">
+        <%= pie_chart Order.group(:order_customer_type).count, colors: ["brown", "coral", "#945944"]  %>
+      </div>
+    </div>
+</div>

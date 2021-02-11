@@ -103,3 +103,17 @@ input[type="date"] {
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+.Admin-chart {
+  margin: 20px;
+  background-color: rgb(247, 231, 225);
+  padding: 20px;
+}
+.Admin-Chart-Main-Div {
+  max-width: 80%;
+  margin: 0 auto;
+  font-size: 22px;
+  display: grid;
+  grid-template-columns: 6fr 6fr;
+  row-gap: 40px;
+}

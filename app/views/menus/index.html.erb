@@ -18,12 +18,16 @@
         </div>
         <div class="MenuUpdate--btns">
 
-            <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
+
               <% if menu.active%>
-                <%= submit_tag "Active", class: "Btns--Menu--btnDisabled", disabled: true %>
+                <%= form_with(url: "/menus/deactive/#{menu.id}", method: "put") do %>
+                  <%= submit_tag "Set InActive", class: "Btns--Menu--btnDisabled" %>
+                <% end %>
+
               <% else %>
-                <%= submit_tag " Set Active", class: "Btns--Menu" %>
-              <% end %>
+                <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
+                  <%= submit_tag " Set Active", class: "Btns--Menu" %>
+                <% end %>
             <% end %>
 
             <div class="Btns--Menu">

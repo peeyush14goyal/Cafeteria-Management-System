@@ -20,7 +20,7 @@
   background-color: rgb(48, 4, 4);
 }
 .Btns--Menu--btnDisabled {
-  background-color: darkgray;
+  background-color: rgb(230, 147, 52);
   font-size: 15px;
   text-align: center;
   margin: 20px;

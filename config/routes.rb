@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get "users/create_user" => "users#createUser", as: :create_user
   post "users/reports" => "users#get_report", as: :get_report
   get "users/reports" => "users#report", as: :report
+  get "users/stats" => "users#charts", as: :stats
+  put "menus/deactive/:id" => "menus#deactive", as: :deactive_menu
+  put "orders/active_items" => "orders#new", as: :active_menu_items
 
   resources :users
   resources :menu_items

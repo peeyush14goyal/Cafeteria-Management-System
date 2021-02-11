@@ -45,4 +45,17 @@ class MenusController < ApplicationController
       render menus_path
     end
   end
+
+  def deactive
+    id = params[:id]
+    menu = Menu.get_menu(id)
+    if menu
+      menu[:active] = false
+      menu.save!
+    else
+      flash[:error] = "Menu Not Found"
+    end
+
+    render menus_path
+  end
 end

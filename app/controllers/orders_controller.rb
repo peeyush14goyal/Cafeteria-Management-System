@@ -22,6 +22,20 @@ class OrdersController < ApplicationController
       @order_items = CurrentOrder.current_user_cart(@order.id)
     end
     @total = 0
+    menus = Menu.get_active_menu
+    @active_menus = []
+    menus.each { |menu|
+      @active_menus.push([menu[:name], menu[:id]])
+    }
+    if params[:active_menu_id]
+      session[:menu_id] = params[:active_menu_id]
+      @id = params[:active_menu_id]
+    elsif session[:menu_id]
+      @id = session[:menu_id]
+    else
+      @id = Menu.isActive.id
+    end
+    @items = MenuItem.get_menu_items(@id)
     render "orders/new"
   end
 
