@@ -36,22 +36,29 @@
 
 
   <div class="SubTitle">Delivered Orders</div>
-  <% @delivered_orders.each do |order|%>
-    <details>
-      <summary  class="Orders--Title">
-          Order #<%= order.id%>
-      </summary>
+   <% if @delivered_orders.all.count > 0 %>
+    <% @delivered_orders.each do |order|%>
+      <details>
+        <summary  class="Orders--Title">
+            Order #<%= order.id%>
+        </summary>
 
-      <%= render partial: "order-user-section" , locals: {
-        user: User.find_by(id: order.user_id),
-        order: order
-      } %>
-      <br />
+        <%= render partial: "order-user-section" , locals: {
+          user: User.find_by(id: order.user_id),
+          order: order
+        } %>
+        <br />
 
-      <%= render partial: "orderItems-section" , locals: {
-        items: OrderItem.get_specific_order_items(order.id),
-        order_total: order.order_total
-      } %>
-    </details>
+        <%= render partial: "orderItems-section" , locals: {
+          items: OrderItem.get_specific_order_items(order.id),
+          order_total: order.order_total
+        } %>
+      </details>
+    <% end %>
+  <% else %>
+    <%= render partial: "empty-section" , locals: {
+          image: "delivered.png",
+          text: "No Orders Delivered"
+        } %>
   <% end %>
 </div>

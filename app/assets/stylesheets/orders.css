@@ -182,3 +182,7 @@
   font-size: 18px;
   cursor: pointer;
 }
+.Empty-WrappingDiv {
+  width: 250px;
+  margin: 0 auto;
+}
