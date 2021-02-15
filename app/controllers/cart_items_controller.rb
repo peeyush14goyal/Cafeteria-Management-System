@@ -10,6 +10,6 @@ class CartItemsController < ApplicationController
     if item != nil
       item.destroy!
     end
-    redirect_to cart_path
+    redirect_to carts_path
   end
 end

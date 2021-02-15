@@ -30,7 +30,23 @@ class CartItem < ApplicationRecord
 
   def self.get_cart_item(id, current_user)
     cart_order = Cart.find_by(user_id: current_user.id)
-    item = cart_order.order_items.find_by(menu_item_id: id)
+    item = CartItem.all.where(order_id: cart_order.id).find_by(id: id)
     item
+  end
+
+  def self.cart_to_order(order_id, cart_id)
+    CartItem.all.where(order_id: cart_id).each { |item|
+      if item[:menu_item_quantity] > 0
+        OrderItem.create!(
+          order_id: order_id,
+          menu_item_id: item[:menu_item_id],
+          menu_item_name: item[:menu_item_name],
+          menu_item_price: item[:menu_item_price],
+          menu_item_quantity: item[:menu_item_quantity],
+          imgPath: item[:imgPath],
+        )
+      end
+      item.destroy
+    }
   end
 end

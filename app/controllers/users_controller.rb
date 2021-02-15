@@ -38,9 +38,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def cart
-  end
-
   def all
     @customers = User.get_customers()
     @clerks = User.get_clerks()
@@ -56,6 +53,8 @@ class UsersController < ApplicationController
     end_date = params[:end_date]
     @report_data = nil
     if start_date && end_date
+      @orders = Order.get_orders(start_date, end_date)
+      @order_items = OrderItem.get_order_items(start_date, end_date)
       @report_data = User.get_report_data(start_date, end_date)
     end
     render "users/report"

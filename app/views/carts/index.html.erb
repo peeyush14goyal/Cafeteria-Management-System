@@ -20,7 +20,7 @@
       <% end %>
    </div>
    <% if @order && @order_items.length > 0 %>
-      <%= form_with(url: "/orders/#{@order.id}", method: "put") do |form| %>
+      <%= form_with(url: "/carts/#{@order.id}", method: "put") do |form| %>
 
             <div class="Cart--Customer-Details">
                <div class="Form-section">

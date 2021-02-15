@@ -21,53 +21,22 @@ class Order < ApplicationRecord
     all.where("status = ? and user_id = ?", "delivered", id)
   end
 
-  def self.check_cart_order(user)
-    user.orders.in_cart
-  end
-
-  def self.in_cart
-    all.find_by(status: "cart")
-  end
-
-  def self.create_order(current_user, customer_type)
-    create!(
-      user_id: current_user.id,
-      placed_at: Date.today(),
-      status: "cart",
-      order_customer_type: customer_type,
-    )
-    Order.last.id
-  end
-
-  def self.update_order_items(params, role, current_user)
-    id = params[:id]
+  def self.create_order(params, current_user, customer_type)
     cart_order = Cart.find_by(user_id: current_user.id)
-
     total = 0
     CartItem.all.where(order_id: cart_order.id).each { |item|
       total = total + item[:menu_item_quantity] * item[:menu_item_price]
-
-      if item[:menu_item_quantity] > 0
-        OrderItem.create!(
-          order_id: id,
-          menu_item_id: item[:menu_item_id],
-          menu_item_name: item[:menu_item_name],
-          menu_item_price: item[:menu_item_price],
-          menu_item_quantity: item[:menu_item_quantity],
-          imgPath: item[:items_imgPath],
-        )
-      end
-      item.destroy
     }
     Order.create!(
-      placed_at: Date.today(),
       user_id: current_user.id,
+      placed_at: Date.today(),
       status: "pending",
       order_customer_name: params[:order_customer_name],
       order_customer_email: params[:order_customer_email],
-      order_customer_type: role,
+      order_customer_type: customer_type,
       order_total: total,
     )
+    Order.last.id
   end
 
   def self.mark_as_delivered(id)
@@ -76,8 +45,6 @@ class Order < ApplicationRecord
       order[:status] = "delivered"
       order[:delivered_at] = Date.today()
       order.save!
-      # else
-      #   flash[:error] = "Order ##{id} NOT FOUND"
     end
   end
 

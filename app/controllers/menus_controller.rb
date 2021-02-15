@@ -56,6 +56,6 @@ class MenusController < ApplicationController
       flash[:error] = "Menu Not Found"
     end
 
-    render menus_path
+    redirect_to menus_path
   end
 end

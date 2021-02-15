@@ -117,3 +117,17 @@ input[type="date"] {
   grid-template-columns: 6fr 6fr;
   row-gap: 40px;
 }
+
+.Report-Chart-Main-Div {
+  margin: 0 auto;
+  font-size: 18px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.Report-chart {
+  margin: 10px;
+  background-color: rgb(247, 231, 225);
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

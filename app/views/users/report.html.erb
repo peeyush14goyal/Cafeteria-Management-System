@@ -54,6 +54,36 @@
         </tr>
     </table>
 
+    <div class="Report-Chart-Main-Div">
+      <div>
+        <div>Order Status</div>
+        <div class="Report-chart">
+          <%= pie_chart @orders.group(:status).count, colors: ["brown", "coral", "#945944"]  %>
+        </div>
+      </div>
+
+      <div>
+        <div>Orders on different days</div>
+        <div class="Report-chart">
+          <%= column_chart @orders.group_by_day(:created_at).count, colors: ["brown"] %>
+        </div>
+      </div>
+
+      <div>
+        <div>Distribution of Items in Orders</div>
+        <div class="Report-chart">
+          <%= column_chart @order_items.group(:menu_item_name).count, colors: ["brown"] %>
+        </div>
+      </div>
+
+      <div>
+        <div>Order Type</div>
+        <div class="Report-chart">
+          <%= pie_chart @orders.group(:order_customer_type).count, colors: ["brown", "coral", "#945944"]  %>
+        </div>
+      </div>
+    </div>
+
     <%= render partial: "orders-section" , locals: {
       report: @report_data
     } %>

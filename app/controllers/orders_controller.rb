@@ -42,24 +42,6 @@ class OrdersController < ApplicationController
     redirect_to "orders/new"
   end
 
-  def update
-    if params[:order_customer_name].length == 0
-      flash[:error] = "Customer Name field cannot be empty"
-      redirect_to cart_path
-    elsif params[:order_customer_email].length == 0
-      flash[:error] = "Customer Email field cannot be empty"
-      redirect_to cart_path
-    else
-      if current_user_role == "Customer"
-        type = "Online"
-      else
-        type = "Walk-in"
-      end
-      Order.update_order_items(params, type)
-      redirect_to orders_path
-    end
-  end
-
   def delivered
     Order.mark_as_delivered(params[:id])
     redirect_to orders_path
