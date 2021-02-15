@@ -27,6 +27,15 @@ An Online Cafeteria Management system, place orders, check their status and when
 Email: **admin@gmail.com**
 Password: **admin**
 
+### As Clerk, What can I do?
+* You can create new orders on behalf of Walk-in customers
+* See all orders
+* Mark the orders as delivered
+
+### Clerk Access
+Email: **clerk@gmail.com**
+Password: **clerk**
+
 ### Customer : What can I do?
 * See today's special menu.
 * Select how much of each dish do you want ?
