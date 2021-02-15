@@ -27,4 +27,10 @@ class CartItem < ApplicationRecord
       existing_item.save!
     end
   end
+
+  def self.get_cart_item(id, current_user)
+    cart_order = Cart.find_by(user_id: current_user.id)
+    item = cart_order.order_items.find_by(menu_item_id: id)
+    item
+  end
 end
