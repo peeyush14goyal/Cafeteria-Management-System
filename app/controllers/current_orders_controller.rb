@@ -1,6 +1,6 @@
 class CurrentOrdersController < ApplicationController
   def update
-    CurrentOrder.create_cart_order(params, current_user, current_user_role)
+    CartItem.add_cart_item(params, current_user)
     redirect_to new_order_path
   end
 

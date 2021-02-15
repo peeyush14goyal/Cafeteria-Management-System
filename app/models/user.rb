@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :orders
+  has_one :carts
   validates :first_name, presence: true
   validates :email, presence: true
   validates :password, length: { minimum: 3 }

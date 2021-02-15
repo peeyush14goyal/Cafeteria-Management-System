@@ -1,7 +1,7 @@
   <div class="Order-MenuSelect">
     <%= form_with(url: active_menu_items_path, method: "put") do |form| %>
-      <%= form.select :active_menu_id, @active_menus, selected: @id %>
-      <%= submit_tag "Get Items", class: "Order-MenuSelect-Btn" %>
+      <%= form.select :active_menu_id, @active_menus, {:selected => @id, :class => "Order-MenuSelect-Btn"}, {:onChange => "javascript: this.form.submit()"} %>
+      <%# <%= submit_tag "Get Items", class: "Order-MenuSelect-Btn" %>
     <% end %>
   </div>
   <% @items.each do |item| %>
@@ -22,7 +22,7 @@
 
         <div class="Order-New-Add-Item">
           <div>
-            <span>Quantity : <%= form.number_field :quantity, in: 0...10, class: "CurrentOrderItems--Quantity-Input" %></span>
+            <span>Quantity : <%= number_field_tag :quantity, 1, in: 0...10, class: "CurrentOrderItems--Quantity-Input" %></span>
             <% if @order_items && @order_items.find_by(menu_item_id: item.id)%>
               <div class="NewOrder-show-quantity">In Cart: <%= @order_items.find_by(menu_item_id: item.id)[:menu_item_quantity] %></div>
             <% end %>

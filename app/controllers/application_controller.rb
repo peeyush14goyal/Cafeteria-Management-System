@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :ensure_user_logged_in
 
+  helper_method :current_user
+
   def ensure_user_logged_in
     unless current_user
       redirect_to "/"

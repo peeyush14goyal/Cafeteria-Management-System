@@ -21,8 +21,12 @@ class Order < ApplicationRecord
     all.where("status = ? and user_id = ?", "delivered", id)
   end
 
-  def self.check_cart_order(id)
-    all.find_by(user_id: id, status: "cart")
+  def self.check_cart_order(user)
+    user.orders.in_cart
+  end
+
+  def self.in_cart
+    all.find_by(status: "cart")
   end
 
   def self.create_order(current_user, customer_type)
@@ -35,14 +39,12 @@ class Order < ApplicationRecord
     Order.last.id
   end
 
-  def self.update_order_items(params)
+  def self.update_order_items(params, role, current_user)
     id = params[:id]
-    order = Order.find_by(id: id)
-    order[:status] = "pending"
-    order[:order_customer_name] = params[:order_customer_name]
-    order[:order_customer_email] = params[:order_customer_email]
+    cart_order = Cart.find_by(user_id: current_user.id)
+
     total = 0
-    CurrentOrder.all.where(order_id: id).each { |item|
+    CartItem.all.where(order_id: cart_order.id).each { |item|
       total = total + item[:menu_item_quantity] * item[:menu_item_price]
 
       if item[:menu_item_quantity] > 0
@@ -57,8 +59,15 @@ class Order < ApplicationRecord
       end
       item.destroy
     }
-    order[:order_total] = total
-    order.save!
+    Order.create!(
+      placed_at: Date.today(),
+      user_id: current_user.id,
+      status: "pending",
+      order_customer_name: params[:order_customer_name],
+      order_customer_email: params[:order_customer_email],
+      order_customer_type: role,
+      order_total: total,
+    )
   end
 
   def self.mark_as_delivered(id)

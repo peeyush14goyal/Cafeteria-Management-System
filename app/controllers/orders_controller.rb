@@ -16,10 +16,9 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @current_user_id = current_user.id
-    @order = Order.check_cart_order(@current_user_id)
+    @order = Cart.get_cart_order(current_user)
     if @order
-      @order_items = CurrentOrder.current_user_cart(@order.id)
+      @order_items = CartItem.get_cart_items(@order.id)
     end
     @total = 0
     menus = Menu.get_active_menu
@@ -51,7 +50,12 @@ class OrdersController < ApplicationController
       flash[:error] = "Customer Email field cannot be empty"
       redirect_to cart_path
     else
-      Order.update_order_items(params)
+      if current_user_role == "Customer"
+        type = "Online"
+      else
+        type = "Walk-in"
+      end
+      Order.update_order_items(params, type)
       redirect_to orders_path
     end
   end
