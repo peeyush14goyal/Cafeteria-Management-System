@@ -6,7 +6,9 @@ An Online Cafeteria Management system, place orders, check their status and when
 #### Screenshots
 
 ![alt_text](https://github.com/peeyush14goyal/Cafeteria-Management-System/blob/master/screenshots/items_with_images.PNG)
-![alt_text](https://github.com/peeyush14goyal/Cafeteria-Management-System/blob/master/screenshots/orders.PNG)
+![alt_text](https://github.com/peeyush14goyal/Cafeteria-Management-System/blob/master/screenshots/1.PNG)
+![alt_text](https://github.com/peeyush14goyal/Cafeteria-Management-System/blob/master/screenshots/2.PNG)
+![alt_text](https://github.com/peeyush14goyal/Cafeteria-Management-System/blob/master/screenshots/3.PNG)
 
 
 ### As Owner, What can I do?
