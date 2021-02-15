@@ -16,10 +16,12 @@ An Online Cafeteria Management system, place orders, check their status and when
 * Add new items to different menus
 * Remove Menus that you do not want
 * Remove Items from Menus
-* Choose Today's Menu
+* Choose Active Menus
 * When order is completed, Mark it as completed
 * See list of all dishes available at your cafe, add them.
 * You can even create orders on behalf of customer
+* You can see Reports
+* You can add Clerks and create accounts on behalf of Users
 
 ### Ok, so how can do I login as owner ?
 Email: **admin@gmail.com**
@@ -27,7 +29,7 @@ Password: **admin**
 
 ### Customer : What can I do?
 * See today's special menu.
-* Select how much of each dish do you want ? (Max : 10)
+* Select how much of each dish do you want ?
 * Add to your cart
 * Check your cart and delete items you do not want and place order.
 * Forgot to order from cart? No problem, we save all your items in your cart. Come anytime and place it. :-)
